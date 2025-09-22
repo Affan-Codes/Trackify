@@ -28,7 +28,16 @@ const Navbar = () => {
               className="flex items-center gap-2 sm:gap-3 shrink-0 group transition-all duration-300 hover:scale-105"
               onClick={ closeMobileMenu }
             >
-              <img src='/logo.png' alt="logo" className="size-7 sm:size-8 md:size-10 border-2 rounded-lg sm:rounded-xl border-emerald-400 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3" />
+              <div className="relative size-7 sm:size-8 md:size-10 border-2 rounded-lg sm:rounded-xl border-emerald-400 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-3 overflow-hidden">
+                <Image
+                  src="/logo.png"
+                  alt="Trackify AI logo"
+                  fill
+                  sizes="(max-width: 640px) 28px, (max-width: 768px) 32px, 40px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
 
               <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 bg-clip-text text-transparent">
                 <span className="hidden sm:inline">Trackify AI</span>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -11,7 +12,16 @@ const Footer = () => {
           {/* Logo and Tagline */ }
           <div className="text-center md:text-left">
             <div className="inline-flex items-center gap-2 mb-4">
-              <img src='/logo.png' alt="logo" className="size-7 sm:size-8 md:size-10 border-2 rounded-lg sm:rounded-xl border-emerald-400 shadow-lg " />
+              <div className="relative size-7 sm:size-8 md:size-10 border-2 rounded-lg sm:rounded-xl border-emerald-400 shadow-lg overflow-hidden">
+                <Image
+                  src="/logo.png"
+                  alt="Trackify AI logo"
+                  fill
+                  sizes="(max-width: 640px) 28px, (max-width: 768px) 32px, 40px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
               <h2 className="text-xl font-bold bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 bg-clip-text text-transparent">
                 Trackify AI
               </h2>
