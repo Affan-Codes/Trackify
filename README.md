@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 Trackify
 
-## Getting Started
+Trackify is a modern expense tracking web application built with **Next.js 15**, **TypeScript**, **Prisma**, and **Clerk Authentication**. It allows users to manage their expenses, gain insights with AI, and visualize spending patterns.
 
-First, run the development server:
+## 🚀 Features
+
+- 🔐 **User Authentication** with [Clerk](https://clerk.dev/)
+- 📈 **Expense Tracking** – Add, edit, and delete expense records
+- 🤖 **AI Insights** – Get smart analysis of your spending habits
+- 📊 **Charts & Stats** – Visualize expenses with bar and line charts
+- 🌙 **Dark/Light Theme** toggle with context support
+- 🗂️ **Categories & History** – Organize and browse past expenses
+- ⚡ **Next.js App Router** with TypeScript and server actions
+- 🗄️ **Prisma + PostgreSQL** database integration
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js 15, React, TailwindCSS
+- **Backend:** Next.js Server Actions, Prisma ORM
+- **Database:** PostgreSQL (via Prisma)
+- **Auth:** Clerk
+- **AI:** Gemini API (for expense insights & category suggestions)
+- **Charts:** Recharts
+- **Styling:** TailwindCSS
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Trackify-main/
+ ┣ app/
+ ┃ ┣ about/           # About page
+ ┃ ┣ contact/         # Contact page
+ ┃ ┣ actions/         # Server actions for expenses & AI
+ ┃ ┣ sign-in/         # Authentication pages
+ ┃ ┣ sign-up/         # Authentication pages
+ ┃ ┣ globals.css      # Global styles
+ ┃ ┣ layout.tsx       # Root layout
+ ┃ ┗ page.tsx         # Home page
+ ┣ components/         # Reusable UI components
+ ┣ contexts/           # React Contexts (Theme provider)
+ ┣ lib/                # Utility functions (AI, DB, User check)
+ ┣ prisma/             # Database schema & migrations
+ ┣ public/             # Static assets (icons, svgs, etc.)
+ ┣ types/              # TypeScript type definitions
+ ┣ .gitignore
+ ┣ eslint.config.mjs
+ ┣ middleware.ts
+ ┣ next.config.ts
+ ┣ package.json
+ ┣ postcss.config.mjs
+ ┣ tsconfig.json
+ ┗ README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Installation & Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1️⃣ Clone the repository
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+git clone https://github.com/Affan-Codes/Trackify.git
+cd Trackify
+```
 
-## Learn More
+### 2️⃣ Install dependencies
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3️⃣ Create .env file in the root directory
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Add the following variables:
 
-## Deploy on Vercel
+```
+DATABASE_URL=postgresql://user:password@localhost:5432/trackify
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your-clerk-publishable-key
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+CLERK_SECRET_KEY=your-clerk-secret-key
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/
+
+GEMINI_API_KEY=your-api-key
+```
+
+### 4️⃣ Run Prisma migrations
+
+```
+npx prisma migrate dev
+```
+
+### 5️⃣ Start the development server
+
+```
+npm run dev
+```
+
+## 🤝 Contributing
+
+- Contributions, issues, and feature requests are welcome!
+- Feel free to open a PR or submit an issue.
+
+# 👨‍💻 Author
+
+Made by **_Affan Khan_**
