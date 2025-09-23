@@ -8,6 +8,9 @@ import { checkUser } from "@/lib/checkUser";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
+
 const HomePage = async () => {
   // Use auth() to check if user is authenticated
   const { userId } = await auth();
