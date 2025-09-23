@@ -32,10 +32,10 @@ export default function RootLayout({
       <ClerkThemeProvider>
         <html lang="en">
           <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300`}
+            className={ `${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300` }
           >
             <Navbar />
-            {children}
+            { children }
             <Footer />
           </body>
         </html>

@@ -8,15 +8,13 @@ import { checkUser } from "@/lib/checkUser";
 import { currentUser } from "@clerk/nextjs/server";
 
 const HomePage = async () => {
-  // Call checkUser first - it handles both user check and DB operations
-  const dbUser = await checkUser();
-
-  if (!dbUser) {
-    return <Guest />;
-  }
+  await checkUser();
 
   const user = await currentUser();
 
+  if (!user) {
+    return <Guest />;
+  }
 
   return <main className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans min-h-screen transition-colors duration-300">
     {/* Mobile-optimized container with responsive padding */ }
@@ -29,7 +27,7 @@ const HomePage = async () => {
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl border border-gray-100/50 dark:border-gray-700/50 hover:shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
             {/* User Image - responsive sizing */ }
             <div className="relative shrink-0">
-              <img src={ user!.imageUrl } alt={ `${user!.firstName}&#39;s profile` } className="size-16 sm:size-20 rounded-2xl border-2 border-white dark:border-gray-600 shadow-lg" />
+              <img src={ user.imageUrl } alt={ `${user.firstName}&#39;s profile` } className="size-16 sm:size-20 rounded-2xl border-2 border-white dark:border-gray-600 shadow-lg" />
               <div className="absolute -bottom-1 -right-1 size-5 sm:size-6 bg-gradient-to-r from-green-400 to-green-500 rounded-full border-2 border-white dark:border-gray-800 flex items-center justify-center">
                 <span className="text-white text-xs">✓</span>
               </div>
@@ -42,7 +40,7 @@ const HomePage = async () => {
                   <span className="text-white text-sm sm:text-lg">👋</span>
                 </div>
                 <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
-                  Welcome Back, { user!.firstName }!
+                  Welcome Back, { user.firstName }!
                 </h2>
               </div>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 max-w-md mx-auto sm:mx-0">
@@ -62,7 +60,7 @@ const HomePage = async () => {
                       Joined
                     </span>
                     <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
-                      { new Date(user!.createdAt).toLocaleDateString() }
+                      { new Date(user.createdAt).toLocaleDateString() }
                     </span>
                   </div>
                 </div>
@@ -76,8 +74,8 @@ const HomePage = async () => {
                       Last Active
                     </span>
                     <span className='text-sm font-semibold text-gray-800 dark:text-gray-200'>
-                      { user!.lastActiveAt
-                        ? new Date(user!.lastActiveAt).toLocaleDateString()
+                      { user.lastActiveAt
+                        ? new Date(user.lastActiveAt).toLocaleDateString()
                         : 'Today' }
                     </span>
                   </div>
